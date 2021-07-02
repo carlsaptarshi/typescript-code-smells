@@ -8,31 +8,31 @@ describe('TicTacToe game', () => {
     });
 
     it('should not allow player O to play first', () => {
-        expect(() => game.Play(Symbol.Naught, {x: 0, y: 0})).toThrow();
+        expect(() => game.Play({x: 0, y: 0}, Symbol.Naught)).toThrow();
     });
 
     it('should not allow player x to play twice in a row', () => {
-        game.Play(Symbol.Cross, {x: 0, y: 0});
-        expect(() => game.Play(Symbol.Cross, {x: 1, y: 0})).toThrow();
+        game.Play({x: 0, y: 0}, Symbol.Cross);
+        expect(() => game.Play({x: 1, y: 0})).toThrow();
     });
 
     it('should not allow a player to play in last played position', () => {
-        game.Play(Symbol.Cross, {x: 0, y: 0});
-        expect(() => game.Play(Symbol.Naught, {x: 0, y: 0})).toThrow();
+        game.Play({x: 0, y: 0}, Symbol.Cross);
+        expect(() => game.Play({x: 0, y: 0}, Symbol.Naught)).toThrow();
     });
 
     it('should not allow a player to play in any played position', () => {
-        game.Play(Symbol.Cross, {x: 0, y: 0});
-        game.Play(Symbol.Naught, {x: 1, y: 0});
-        expect(() => game.Play(Symbol.Cross, {x: 0, y: 0})).toThrow();
+        game.Play({x: 0, y: 0}, Symbol.Cross);
+        game.Play({x: 1, y: 0}, Symbol.Naught);
+        expect(() => game.Play({x: 0, y: 0})).toThrow();
     });
 
     it('should declare player X as winner if it plays three in top row', () => {
-        game.Play(Symbol.Cross, {x: 0, y: 0});
-        game.Play(Symbol.Naught, {x: 1, y: 0});
-        game.Play(Symbol.Cross, {x: 0, y: 1});
-        game.Play(Symbol.Naught, {x: 1, y: 1});
-        game.Play(Symbol.Cross, {x: 0, y: 2});
+        game.Play({x: 0, y: 0}, Symbol.Cross);
+        game.Play({x: 1, y: 0}, Symbol.Naught);
+        game.Play({x: 0, y: 1}, Symbol.Cross);
+        game.Play({x: 1, y: 1}, Symbol.Naught);
+        game.Play({x: 0, y: 2}, Symbol.Cross);
 
         const winner = game.Winner();
 
@@ -40,12 +40,12 @@ describe('TicTacToe game', () => {
     });
 
     it('should declare player O as winner if it plays three in top row', () => {
-        game.Play(Symbol.Cross, {x: 1, y: 0});
-        game.Play(Symbol.Naught, {x: 0, y: 0});
-        game.Play(Symbol.Cross, {x: 1, y: 1});
-        game.Play(Symbol.Naught, {x: 0, y: 1});
-        game.Play(Symbol.Cross, {x: 2, y: 2});
-        game.Play(Symbol.Naught, {x: 0, y: 2});
+        game.Play({x: 1, y: 0}, Symbol.Cross);
+        game.Play({x: 0, y: 0}, Symbol.Naught);
+        game.Play({x: 1, y: 1}, Symbol.Cross);
+        game.Play({x: 0, y: 1}, Symbol.Naught);
+        game.Play({x: 2, y: 2}, Symbol.Cross);
+        game.Play({x: 0, y: 2}, Symbol.Naught);
 
         const winner = game.Winner();
 
@@ -53,11 +53,11 @@ describe('TicTacToe game', () => {
     });
 
     it('should declare player X as winner if it plays three in middle row', () => {
-        game.Play(Symbol.Cross, {x: 1, y: 0});
-        game.Play(Symbol.Naught, {x: 0, y: 0});
-        game.Play(Symbol.Cross, {x: 1, y: 1});
-        game.Play(Symbol.Naught, {x: 0, y: 1});
-        game.Play(Symbol.Cross, {x: 1, y: 2});
+        game.Play({x: 1, y: 0}, Symbol.Cross);
+        game.Play({x: 0, y: 0}, Symbol.Naught);
+        game.Play({x: 1, y: 1}, Symbol.Cross);
+        game.Play({x: 0, y: 1}, Symbol.Naught);
+        game.Play({x: 1, y: 2}, Symbol.Cross);
 
         const winner = game.Winner();
 
@@ -65,12 +65,12 @@ describe('TicTacToe game', () => {
     });
 
     it('should declare player O as winner if it plays three in middle row', () => {
-        game.Play(Symbol.Cross, {x: 0, y: 0});
-        game.Play(Symbol.Naught, {x: 1, y: 0});
-        game.Play(Symbol.Cross, {x: 2, y: 1});
-        game.Play(Symbol.Naught, {x: 1, y: 1});
-        game.Play(Symbol.Cross, {x: 2, y: 2});
-        game.Play(Symbol.Naught, {x: 1, y: 2});
+        game.Play({x: 0, y: 0}, Symbol.Cross);
+        game.Play({x: 1, y: 0}, Symbol.Naught);
+        game.Play({x: 2, y: 1}, Symbol.Cross);
+        game.Play({x: 1, y: 1}, Symbol.Naught);
+        game.Play({x: 2, y: 2}, Symbol.Cross);
+        game.Play({x: 1, y: 2}, Symbol.Naught);
 
         const winner = game.Winner();
 
@@ -78,11 +78,11 @@ describe('TicTacToe game', () => {
     });
 
     it('should declare player X as winner if it plays three in bottom row', () => {
-        game.Play(Symbol.Cross, {x: 2, y: 0});
-        game.Play(Symbol.Naught, {x: 0, y: 0});
-        game.Play(Symbol.Cross, {x: 2, y: 1});
-        game.Play(Symbol.Naught, {x: 0, y: 1});
-        game.Play(Symbol.Cross, {x: 2, y: 2});
+        game.Play({x: 2, y: 0}, Symbol.Cross);
+        game.Play({x: 0, y: 0}, Symbol.Naught);
+        game.Play({x: 2, y: 1}, Symbol.Cross);
+        game.Play({x: 0, y: 1}, Symbol.Naught);
+        game.Play({x: 2, y: 2}, Symbol.Cross);
 
         const winner = game.Winner();
 
@@ -90,12 +90,12 @@ describe('TicTacToe game', () => {
     });
 
     it('should declare player O as winner if it plays three in bottom row', () => {
-        game.Play(Symbol.Cross, {x: 0, y: 0});
-        game.Play(Symbol.Naught, {x: 2, y: 0});
-        game.Play(Symbol.Cross, {x: 1, y: 1});
-        game.Play(Symbol.Naught, {x: 2, y: 1});
-        game.Play(Symbol.Cross, {x: 0, y: 1});
-        game.Play(Symbol.Naught, {x: 2, y: 2});
+        game.Play({x: 0, y: 0}, Symbol.Cross);
+        game.Play({x: 2, y: 0}, Symbol.Naught);
+        game.Play({x: 1, y: 1}, Symbol.Cross);
+        game.Play({x: 2, y: 1}, Symbol.Naught);
+        game.Play({x: 0, y: 1}, Symbol.Cross);
+        game.Play({x: 2, y: 2}, Symbol.Naught);
 
         const winner = game.Winner();
 
